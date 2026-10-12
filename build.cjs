@@ -1,0 +1,1 @@
+const fs=require('fs');fs.mkdirSync('dist',{recursive:true});for(const f of ['index.html','style.css','app.js'])fs.copyFileSync(f,'dist/'+f);console.log('Static build ready in dist');
