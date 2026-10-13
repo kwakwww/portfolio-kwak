@@ -138,7 +138,6 @@
    const title=el('div','book-work-title');title.append(el('h3','',project.title),el('span','status-tag',project.ready?'PROJECT':'등록 예정'));right.append(title,el('p','book-work-subtitle',project.subtitle));
    const brief=el('div','book-brief');if(project.intent)brief.append(el('span','eyebrow','INTENTION'),el('p','',project.intent));
    const tools=el('div','tools');project.tools.forEach(t=>tools.append(el('span','tool-tag',t)));brief.append(tools);right.append(brief);
-   const details=button(project.video?'영상 크게 보기 ↗':'등록용 상세 보기 ↗','book-detail',()=>ui.openProject(project,details));right.append(details);
   } else right.append(el('div','empty-chapter','새로운 작품을 위한 빈 페이지.'));
   right.append(pageFooter(project?.ready?'VIEW THE EFFECT':'실제 작품 자료 등록 예정',String((position+1)*2+2).padStart(3,'0')));return[left,right];
  }
