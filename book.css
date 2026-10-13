@@ -411,3 +411,5 @@ dialog{background:#121314;border-color:#81704c66}.dialog-header{background:#1415
 .archive-expanded .book-showreel{bottom:23px}.archive-board .archive-heading{top:47%;left:45%}
 }
 @media(max-width:700px){.archive-expanded{height:1610px}.archive-expanded .archive-tile[data-project="water-explosion"]{top:1315px;bottom:auto;height:190px}.archive-expanded .book-showreel{bottom:25px}.archive-tile .chapter-label>span{font-size:13px}}
+/* Keep the folio composed on wide monitors instead of stretching edge to edge. */
+@media(min-width:701px){.artbook-section.shell{width:min(1280px,92%);max-width:1280px;padding-left:0;padding-right:0;margin-left:auto;margin-right:auto}.book{--book-frame-height:clamp(720px,65vw,860px)}.cover-statement{font-size:clamp(44px,4.4vw,66px)}.archive-heading>strong{font-size:clamp(74px,7vw,112px)}}
