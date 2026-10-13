@@ -354,3 +354,26 @@ dialog{background:#121314;border-color:#81704c66}.dialog-header{background:#1415
 /* A slightly wider artbook shares the same cover and contents dimensions. */
 @media(min-width:701px){.artbook-section.shell{width:min(1560px,100%);padding-left:4%;padding-right:4%}.book-stage{padding-left:16px;padding-right:16px}}
 @media(min-width:701px){.artbook-section.shell{width:100%;max-width:none;padding-left:2%;padding-right:2%}.book-stage{padding-left:0;padding-right:0}}
+/* Immersive archive spread: balanced height and an editorial constellation. */
+@media(min-width:701px){
+.book{--book-frame-height:clamp(720px,82vh,980px)}
+.archive-board,.archive-expanded{height:var(--book-frame-height)}
+.cover-editorial-left{padding:52px 7% 45px}.cover-kicker{margin-top:clamp(105px,15vh,190px)}.cover-statement{font-size:clamp(48px,5vw,86px)}
+.cover-showreel{bottom:100px;right:6%}
+.archive-board .archive-heading{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);display:block;text-align:center;z-index:3;pointer-events:none}
+.archive-heading>span{display:block;font-size:14px;letter-spacing:1px;line-height:1}
+.archive-heading>strong{display:block;font-size:clamp(74px,8vw,145px);font-weight:400;line-height:.9;letter-spacing:-.05em;text-shadow:0 4px 25px #0008}
+.archive-heading>small{display:block;margin-top:17px;font-size:7px;letter-spacing:3px;color:#c3baaa}
+.archive-masthead{left:30px;right:30px;top:25px}.archive-symbol{display:block;font-family:var(--display-font);font-size:32px}
+.archive-expanded .archive-tile.chapter-link{width:23%;height:27%;right:auto}
+.archive-expanded .tile-1{left:7%;top:7%;width:24%;height:25%}
+.archive-expanded .tile-2{left:47%;top:7%;width:23%;height:29%}
+.archive-expanded .tile-3{left:76%;top:15%;width:22%;height:25%}
+.archive-expanded .tile-4{left:3%;top:49%;width:26%;height:29%}
+.archive-expanded .tile-5{left:35%;top:67%;width:23%;height:25%}
+.archive-expanded .tile-6{left:72%;top:54%;width:26%;height:28%}
+.archive-expanded .tile-7{left:8%;top:82%;width:21%;height:15%}
+.archive-expanded .book-showreel{left:auto;right:32px;bottom:20px}
+.archive-tile-caption{padding:26px 14px 13px}.archive-tile .chapter-label>span{font-size:14px}
+.paper-stack{height:var(--book-frame-height)}
+}
