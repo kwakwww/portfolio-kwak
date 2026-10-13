@@ -413,3 +413,12 @@ dialog{background:#121314;border-color:#81704c66}.dialog-header{background:#1415
 @media(max-width:700px){.archive-expanded{height:1610px}.archive-expanded .archive-tile[data-project="water-explosion"]{top:1315px;bottom:auto;height:190px}.archive-expanded .book-showreel{bottom:25px}.archive-tile .chapter-label>span{font-size:13px}}
 /* Keep the folio composed on wide monitors instead of stretching edge to edge. */
 @media(min-width:701px){.artbook-section.shell{width:min(1280px,92%);max-width:1280px;padding-left:0;padding-right:0;margin-left:auto;margin-right:auto}.book{--book-frame-height:clamp(720px,65vw,860px)}.cover-statement{font-size:clamp(44px,4.4vw,66px)}.archive-heading>strong{font-size:clamp(74px,7vw,112px)}}
+/* Mobile opens around the binding without the heavier desktop paper stack. */
+@media(max-width:700px) and (prefers-reduced-motion:no-preference){
+.book{perspective:1400px}.cover-face.editorial-cover{perspective:1400px;transform-style:preserve-3d}.book-cover{overflow:visible}
+.cover-editorial-left,.cover-editorial-right{backface-visibility:hidden;transform-style:preserve-3d;transition:transform 1.1s cubic-bezier(.38,0,.25,1),opacity 1.1s}
+.cover-editorial-left{transform-origin:right center}.cover-editorial-right{transform-origin:left center}
+.book.is-open .cover-editorial-left{transform:rotateY(105deg);opacity:0;filter:none}
+.book.is-open .cover-editorial-right{transform:rotateY(-120deg);opacity:0;filter:none;transition-delay:.08s}
+.book-spread{transition:opacity .9s .2s,transform 1.1s;transform:scale(.97)}.book.is-open .book-spread{transform:none}
+}

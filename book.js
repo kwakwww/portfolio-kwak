@@ -74,12 +74,13 @@
    node.setAttribute('aria-label',`${chapter.title} / ${featured.title} 작품 열기`);
 
    if(featured) {
-    const preview=el('video','chapter-video-preview');preview.src=ui.safePath(featured.preview)||ui.safePath(featured.video);preview.loop=Boolean(ui.safePath(featured.preview));preview.poster=ui.safePath(featured.thumbnail);preview.muted=true;preview.defaultMuted=true;preview.playsInline=true;preview.preload='none';preview.setAttribute('aria-hidden','true');
+    const preview=el('video','chapter-video-preview');preview.src=ui.safePath(featured.preview)||ui.safePath(featured.video);preview.loop=false;preview.poster=ui.safePath(featured.thumbnail);preview.muted=true;preview.defaultMuted=true;preview.playsInline=true;preview.preload='none';preview.setAttribute('aria-hidden','true');
     // 앞부분만 무음 반복. 전체 영상 재생은 작품 상세 화면에서 제공합니다.
-    preview.addEventListener('timeupdate',()=>{if(!preview.loop&&preview.currentTime>=8)preview.currentTime=0;});
-    preview.addEventListener('ended',()=>{preview.currentTime=0;preview.play().catch(()=>{});});
+    let finished=false;
+    preview.addEventListener('timeupdate',()=>{if(!featured.preview&&preview.currentTime>=8){finished=true;preview.pause();}});
+    preview.addEventListener('ended',()=>{finished=true;preview.pause();});
     let inView=false;
-    const update=()=>{if(inView&&!reducedMotion()&&!document.hidden)preview.play().catch(()=>{});else preview.pause();};
+    const update=()=>{if(inView&&!finished&&!reducedMotion()&&!document.hidden)preview.play().catch(()=>{});else preview.pause();};
     const observer=new IntersectionObserver(entries=>{inView=entries.some(e=>e.isIntersecting);update();},{threshold:.25});observer.observe(preview);
     document.addEventListener('visibilitychange',update);
     previewCleanup.push(()=>{observer.disconnect();document.removeEventListener('visibilitychange',update);preview.pause();preview.removeAttribute('src');preview.load();});
@@ -163,13 +164,13 @@
   if (opened) return;
   clearTimeout(openingTimer);opened=true;position=-1;cover.disabled=true;cover.setAttribute('aria-expanded','true');spread.hidden=false;spread.inert=true;controls.hidden=false;controls.inert=true;close.hidden=false;render();
   requestAnimationFrame(()=>{if(opened){book.classList.add('is-open');if(!smallScreen()&&!reducedMotion())book.classList.add('is-unfurling');}});
-  openingTimer=setTimeout(()=>{if(!opened)return;cover.hidden=true;book.classList.remove('is-unfurling');spread.inert=false;controls.inert=false;document.querySelector('#book-page-heading').focus({preventScroll:true});},reducedMotion()?0:smallScreen()?450:2200);
+  openingTimer=setTimeout(()=>{if(!opened)return;cover.hidden=true;book.classList.remove('is-unfurling');spread.inert=false;controls.inert=false;document.querySelector('#book-page-heading').focus({preventScroll:true});},reducedMotion()?0:smallScreen()?1250:2200);
  }
  function closeBook() {
   clearTimeout(openingTimer);opened=false;position=-1;book.classList.remove('turn-forward','turn-backward','is-unfurling');spread.inert=true;controls.hidden=true;close.hidden=true;cover.hidden=false;cover.disabled=true;cover.setAttribute('aria-expanded','false');status.textContent='책을 접고 있습니다.';
   void cover.offsetWidth;
   book.classList.remove('is-open');
-  openingTimer=setTimeout(()=>{if(opened)return;spread.hidden=true;cover.disabled=false;status.textContent='표지를 눌러 작품의 세계를 펼쳐보세요.';cover.focus({preventScroll:true});},reducedMotion()?0:smallScreen()?450:1450);
+  openingTimer=setTimeout(()=>{if(opened)return;spread.hidden=true;cover.disabled=false;status.textContent='표지를 눌러 작품의 세계를 펼쳐보세요.';cover.focus({preventScroll:true});},reducedMotion()?0:smallScreen()?1100:1450);
  }
  cover.addEventListener('click',openBook);close.addEventListener('click',closeBook);previous.addEventListener('click',()=>navigate(position-1));next.addEventListener('click',()=>navigate(position+1));indexButton.addEventListener('click',()=>navigate(-1));
 
