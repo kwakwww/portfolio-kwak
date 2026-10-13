@@ -71,20 +71,10 @@
   $('#project-facts').hidden = !facts.length;
   $('#project-facts').replaceChildren(...facts.map(([label,value])=>{const item=el('div');item.append(el('span','eyebrow',label),el('p','',value));return item;}));
   $('#dialog-intent').textContent = p.intent || '작품에서 전달하려는 게임플레이 정보, 분위기, 시각적 목표를 작성해 주세요.';
-  $('#dialog-process').replaceChildren(...(p.process.length ? p.process : ['레퍼런스와 형태·타이밍 분석 내용을 입력해 주세요.', '텍스처, 메시, 머티리얼, 파티클 제작 과정을 입력해 주세요.', '엔진 내 통합과 최적화 과정을 입력해 주세요.']).map(step => el('li', '', step)));
   $('#dialog-tools').replaceChildren(...(p.tools.length ? p.tools : ['사용 도구·기술 입력 예정']).map(t => el('span', 'tool-tag', t)));
-  $('#dialog-review').textContent = p.review || '완성 결과와 개선 사항, 검증한 성능 정보를 입력해 주세요. 측정하지 않은 수치는 사용하지 않습니다.';
   $('.dialog-notice').textContent = p.ready ? '작품의 담당 범위와 사용 리소스는 작성자가 제공한 내용입니다.' : '이 화면은 실제 완성 작품이 아닌 등록용 임시 콘텐츠입니다.';
-  for (const [selector,value] of [['#dialog-intent',p.intent],['#dialog-process',p.process?.length],['#dialog-tools',p.tools?.length],['#dialog-review',p.review]]) $(selector).closest('section').hidden = !value;
+  for (const [selector,value] of [['#dialog-intent',p.intent],['#dialog-tools',p.tools?.length]]) $(selector).closest('section').hidden = !value;
   $('.dialog-notice').hidden = p.ready;
-  let processMedia = $('#dialog-process-media');
-  if (!processMedia) { processMedia = el('div'); processMedia.id='dialog-process-media'; $('#dialog-process').after(processMedia); }
-  processMedia.replaceChildren();
-  const processClips = p.processVideos || (p.processVideo ? [{src:p.processVideo,poster:p.processPoster,title:`${p.title} 제작 과정`}] : []);
-  for (const clip of processClips.filter(clip=>safePath(clip.src))) {
-   const item=el('figure','process-clip'); item.append(el('figcaption','',clip.title || `${p.title} 제작 과정`),videoPlayer(safePath(clip.src),clip.poster,clip.title || p.title,'')); processMedia.append(item);
-   $('#dialog-process').closest('section').hidden=false; if (!p.process?.length) $('#dialog-process').replaceChildren();
-  }
   dialog.showModal(); document.body.classList.add('modal-open'); dialog.scrollTop = 0;
  }
  $('.dialog-close').addEventListener('click', () => dialog.close()); $('.dialog-return').addEventListener('click', () => dialog.close());

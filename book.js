@@ -132,15 +132,15 @@
   });
   if (!works.length) list.append(el('p','book-note','아직 등록된 작품이 없습니다. content.js에서 이 챕터의 작품을 추가해 주세요.'));
   left.append(list,pageFooter('CHAPTER / '+String(chapterIndex+1).padStart(2,'0'),String((position+1)*2+1).padStart(3,'0')));
-  const right=el('div','book-page chapter-work');right.append(el('span','eyebrow',project?.ready?'SELECTED WORK / VIDEO BREAKDOWN':'WORK IN PREPARATION / PLACEHOLDER'));
+  const right=el('div','book-page chapter-work');right.append(el('span','eyebrow',project?.ready?'SELECTED WORK / FINAL FILM':'WORK IN PREPARATION / PLACEHOLDER'));
   if (project) {
    right.append(mediaPreview(project,chapter));
    const title=el('div','book-work-title');title.append(el('h3','',project.title),el('span','status-tag',project.ready?'PROJECT':'등록 예정'));right.append(title,el('p','book-work-subtitle',project.subtitle));
    const brief=el('div','book-brief');if(project.intent)brief.append(el('span','eyebrow','INTENTION'),el('p','',project.intent));
    const tools=el('div','tools');project.tools.forEach(t=>tools.append(el('span','tool-tag',t)));brief.append(tools);right.append(brief);
-   const details=button(project.video?'영상 및 제작 과정 보기 ↗':'등록용 상세 보기 ↗','book-detail',()=>ui.openProject(project,details));right.append(details);
+   const details=button(project.video?'영상 크게 보기 ↗':'등록용 상세 보기 ↗','book-detail',()=>ui.openProject(project,details));right.append(details);
   } else right.append(el('div','empty-chapter','새로운 작품을 위한 빈 페이지.'));
-  right.append(pageFooter(project?.ready?'VIEW THE EFFECT / READ THE PROCESS':'실제 작품 자료 등록 예정',String((position+1)*2+2).padStart(3,'0')));return[left,right];
+  right.append(pageFooter(project?.ready?'VIEW THE EFFECT':'실제 작품 자료 등록 예정',String((position+1)*2+2).padStart(3,'0')));return[left,right];
  }
  function render(focus = false) {
   previewCleanup.forEach(cleanup=>cleanup());previewCleanup=[];
