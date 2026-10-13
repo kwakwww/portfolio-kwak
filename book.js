@@ -163,8 +163,8 @@
  function openBook() {
   if (opened) return;
   clearTimeout(openingTimer);opened=true;position=-1;cover.disabled=true;cover.setAttribute('aria-expanded','true');spread.hidden=false;spread.inert=true;controls.hidden=false;controls.inert=true;close.hidden=false;render();
-  requestAnimationFrame(()=>{if(opened){book.classList.add('is-open');if(!smallScreen()&&!reducedMotion())book.classList.add('is-unfurling');}});
-  openingTimer=setTimeout(()=>{if(!opened)return;cover.hidden=true;book.classList.remove('is-unfurling');spread.inert=false;controls.inert=false;document.querySelector('#book-page-heading').focus({preventScroll:true});},reducedMotion()?0:smallScreen()?1250:2200);
+  requestAnimationFrame(()=>{if(opened){book.classList.add('is-open');if(!reducedMotion())book.classList.add('is-unfurling');}});
+  openingTimer=setTimeout(()=>{if(!opened)return;cover.hidden=true;book.classList.remove('is-unfurling');spread.inert=false;controls.inert=false;document.querySelector('#book-page-heading').focus({preventScroll:true});},reducedMotion()?0:2200);
  }
  function closeBook() {
   clearTimeout(openingTimer);opened=false;position=-1;book.classList.remove('turn-forward','turn-backward','is-unfurling');spread.inert=true;controls.hidden=true;close.hidden=true;cover.hidden=false;cover.disabled=true;cover.setAttribute('aria-expanded','false');status.textContent='책을 접고 있습니다.';
