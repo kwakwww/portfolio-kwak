@@ -451,3 +451,5 @@ dialog{background:#121314;border-color:#81704c66}.dialog-header{background:#1415
 .book-media-label .book-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0}
 .book-media-label>span:last-child{position:absolute;left:0;right:0;top:calc(50% + 30px);text-align:center}
 }
+/* Headings receive focus after navigation without browser-blue decoration. */
+#book-page-heading:focus,#book-page-heading:focus-visible,.book-heading:focus,.book-heading:focus-visible{outline:none!important;box-shadow:none!important;text-decoration:none!important;-webkit-tap-highlight-color:transparent}
