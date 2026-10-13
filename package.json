@@ -1,1 +1,1 @@
-{"name":"kwak-portfolio","version":"1.0.0","private":true,"scripts":{"dev":"node server.cjs","build":"node build.cjs","check":"node --check app.js"}}
+{"name":"kwak-vfx-portfolio","version":"1.0.0","private":true,"scripts":{"dev":"node server.cjs","build":"node build.cjs","check":"node --check app.js && node --check book.js && node --check content.js && node --check server.cjs && node --check build.cjs"}}

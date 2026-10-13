@@ -1,1 +1,10 @@
-const fs=require('fs');fs.mkdirSync('dist',{recursive:true});for(const f of ['index.html','style.css','app.js'])fs.copyFileSync(f,'dist/'+f);console.log('Static build ready in dist');
+const fs = require('node:fs');
+const path = require('node:path');
+const output = path.join(__dirname, 'dist');
+fs.mkdirSync(output, { recursive: true, filter: source => path.basename(source) !== 'water-explosion.mp4' });
+for (const file of ['index.html', 'style.css', 'book.css', 'content.js', 'app.js', 'book.js']) fs.copyFileSync(path.join(__dirname, file), path.join(output, file));
+fs.cpSync(path.join(__dirname, 'assets'), path.join(output, 'assets'), { recursive: true, filter: source => path.basename(source) !== 'water-explosion.mp4' });
+const originalCopy = path.join(output, 'assets', 'water-explosion.mp4');
+if (fs.existsSync(originalCopy)) fs.unlinkSync(originalCopy);
+fs.writeFileSync(path.join(output, '.nojekyll'), '');
+console.log('Static build ready in dist');

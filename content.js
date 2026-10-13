@@ -1,0 +1,30 @@
+/* 미디어 경로는 assets/... 상대 경로 또는 HTTPS 주소를 사용하세요. */
+window.PORTFOLIO = {
+ name: 'KWAK',
+ intro: '플레이의 순간에 힘을 더하는\n실시간 비주얼 이펙트를 만듭니다.',
+ about: '기술의 원리를 이해하고 작업에 적용하며, 원하는 느낌이 나올 때까지 조정하고 개선합니다. 꾸준히 배우고 만드는 과정을 통해 성장하는 주니어 VFX 아티스트입니다.',
+ profileReady: true, // 본인의 소개와 실제 사용 도구로 수정한 뒤 true
+ email: 'gh991126@naver.com', // 실제 이메일 입력 시 메일 링크와 주소 복사 버튼 표시
+ github: '',
+ resume: '', // 예: assets/resume.pdf
+ tools: ['Unreal Engine / Niagara', 'Houdini · 기초 학습 중', '3ds Max', 'Photoshop'],
+ showreel: { src: 'https://www.youtube.com/watch?v=9pnH7G6ZnjI', poster: '', captions: '', caption: 'KWAK / Game VFX Portfolio — 포트폴리오 영상' },
+ chapters: [
+  { id: 'aura', title: 'BUFF', subtitle: '캐릭터를 감싸는 빛', description: '캐릭터 주변의 빛과 궤적을 탐색하는 챕터.', theme: 'environment' },
+  { id: 'magic', title: 'MAGIC', subtitle: '형태를 넘어, 상상으로', description: '스킬의 성격과 판타지의 감각을 담는 챕터.', theme: 'magic' },
+  { id: 'energy', title: 'ENERGY', subtitle: '응축에서 확산까지', description: '흐름과 밀도, 에너지의 움직임을 탐색하는 챕터.', theme: 'environment' },
+  { id: 'lightning', title: 'LIGHTNING', subtitle: '찰나를 가르는 빛', description: '전기의 형태와 빠른 타이밍을 탐색하는 챕터.', theme: 'lightning' },
+  { id: 'impact', title: 'IMPACT', subtitle: '타격의 순간을 설계하다', description: '타격감과 명확한 피드백을 위한 챕터.', theme: 'impact' },
+  { id: 'destruction', title: 'DESTRUCTION', subtitle: '부서지는 순간의 질서', description: '파편과 폭발, 소멸의 리듬을 탐색하는 챕터.', theme: 'destruction' },
+  { id: 'material', title: 'MATERIAL / SHADER', subtitle: '표면 아래의 시각 언어', description: '머티리얼과 셰이더의 표현을 탐색하는 챕터.', theme: 'study' }
+ ],
+ projects: [
+  { id: 'port-02', chapter: 'aura', title: 'Buff', subtitle: '캐릭터 오라 이펙트 / 게임 VFX', category: 'Buff', ready: true, video: 'assets/port-02-web.mp4', preview: 'assets/port-02-preview.mp4', thumbnail: 'assets/port-02-poster.jpg', captions: '', year: '', role: '', duration: '00:10', tools: ['Unreal Engine', 'Niagara', 'Photoshop'], intent: '캐릭터에게 버프가 적용되는 순간을 알아보기 쉽게 표현하고자 했습니다. 캐릭터 주변을 감싸는 빛과 위로 올라가는 입자를 활용해 강화 효과가 느껴지도록 작업했습니다.', process: ['Photoshop으로 이펙트에 사용할 텍스처를 만들고, Unreal Engine의 Niagara에서 입자의 움직임과 크기, 색상을 조정했습니다. 여러 번 재생해 보면서 어색한 부분을 수정했습니다.'], review: '', theme: 'environment' },
+  { id: 'port-06-01', chapter: 'magic', title: 'Magic', subtitle: '마법진 이펙트 / 게임 VFX', category: 'Magic', ready: true, video: 'assets/port_06_01-web.mp4', preview: 'assets/port_06_01-preview.mp4', thumbnail: 'assets/port_06_01-poster.jpg', captions: '', year: '', role: '', duration: '00:08', tools: ['Unreal Engine', 'Niagara', 'Photoshop'], intent: '우주의 신비로운 분위기를 이펙트로 표현해 보고 싶었습니다. 중심으로 모이는 빛과 주변을 감싸는 움직임을 활용해 작은 우주처럼 보이도록 만들고, 색상과 등장 타이밍을 조정하며 전체 흐름이 자연스럽게 이어지도록 신경 썼습니다.', process: ['Photoshop으로 이펙트에 사용할 텍스처를 만들고, Unreal Engine의 Niagara에서 입자의 움직임과 크기, 색상을 조정했습니다. 여러 번 재생해 보면서 어색한 부분을 수정했습니다.'], review: '', theme: 'magic' },
+  { id: 'port-07-map', chapter: 'energy', title: 'Arrow', subtitle: '붉은 궤적 이펙트 / 게임 VFX', category: 'Energy', ready: true, video: 'assets/port_07_map-web.mp4', preview: 'assets/port_07_map-preview.mp4', thumbnail: 'assets/port_07_map-poster.jpg', captions: '', year: '', role: '', duration: '00:09', tools: ['Unreal Engine', 'Niagara', 'Photoshop'], intent: '화살이 날아가는 방향과 속도감이 잘 보이도록 만들고자 했습니다. 화살 뒤에 남는 궤적의 길이와 밝기를 조정하면서 빠르게 이동하는 느낌을 표현했습니다.', process: ['Photoshop으로 이펙트에 사용할 텍스처를 만들고, Unreal Engine의 Niagara에서 입자의 움직임과 크기, 색상을 조정했습니다. 여러 번 재생해 보면서 어색한 부분을 수정했습니다.'], review: '', theme: 'environment' },
+  { id: 'port-05', chapter: 'impact', title: 'Sword Slash', subtitle: '검기 이펙트 / 게임 VFX', category: 'Impact', ready: true, video: 'assets/Port_05_LevelSequence_1-web.mp4', preview: 'assets/Port_05_LevelSequence_1-preview.mp4', thumbnail: 'assets/Port_05_LevelSequence_1-poster.jpg', captions: '', year: '', role: '', duration: '00:09', tools: ['Unreal Engine', 'Niagara', 'Photoshop'], intent: '검을 휘두를 때 힘이 모였다가 한 번에 터지는, 쫄깃한 텐션을 표현해 보고 싶었습니다. 검기의 궤적이 잘 보이면서도 타격 순간에 힘이 느껴지도록 빛이 나타나고 사라지는 타이밍을 조정했습니다. 캐릭터의 움직임과 이펙트가 자연스럽게 이어지도록 여러 번 재생해 보며 속도와 잔상을 다듬었습니다.', process: ['Photoshop으로 이펙트에 사용할 텍스처를 만들고, Unreal Engine의 Niagara에서 입자의 움직임과 크기, 색상을 조정했습니다. 여러 번 재생해 보면서 어색한 부분을 수정했습니다.'], review: '', theme: 'impact' },
+  { id: 'matrix', processVideos: [{src: 'assets/matrix-process-1.mp4', poster: 'assets/matrix-process-1.jpg', title: 'Matrix 제작 과정 01'}, {src: 'assets/matrix-process-2.mp4', poster: 'assets/matrix-process-2.jpg', title: 'Matrix 제작 과정 02'}], chapter: 'material', title: 'Matrix', subtitle: '디지털 공간 전환 / 게임 VFX', category: 'Material / Shader', ready: true, video: 'assets/matrix-web.mp4', preview: 'assets/matrix-preview.mp4', thumbnail: 'assets/matrix-poster.jpg', captions: '', year: '', role: '', duration: '00:15', tools: [], intent: '영화 매트릭스를 좋아해서 특유의 디지털 분위기를 이펙트로 표현해 보고 싶었습니다. 검기 부분은 최대한 적은 수의 이미터로 원하는 형태를 만드는 데 집중했습니다. 검기의 움직임과 주변 공간이 변하는 장면이 자연스럽게 이어지도록 색상과 타이밍을 조정하며, 영화에서 느꼈던 분위기를 담아보고자 했습니다.', process: [], review: '', theme: 'study' },
+  { id: 'comp-2', chapter: 'energy', title: 'Gacha', subtitle: '에너지 이펙트 / 게임 VFX', category: 'Energy', ready: true, video: 'assets/comp-2-web.mp4', preview: 'assets/comp-2-preview.mp4', thumbnail: 'assets/comp-2-poster.jpg', captions: '', year: '', role: '', duration: '00:09', tools: ['Unreal Engine', 'Niagara', 'Photoshop'], intent: '명조의 뽑기 연출에서 느꼈던 기대감과 신비로운 분위기를 이펙트로 표현해 보고 싶었습니다. 빛이 하늘로 올라가고 에너지가 퍼지는 흐름을 중심으로, 결과가 공개되기 전의 설렘을 담고자 했습니다. 상승하는 속도와 빛이 확산되는 타이밍을 조금씩 조정하며 장면이 자연스럽게 이어지도록 작업했습니다.', process: ['Photoshop으로 이펙트에 사용할 텍스처를 만들고, Unreal Engine의 Niagara에서 입자의 움직임과 크기, 색상을 조정했습니다. 여러 번 재생해 보면서 어색한 부분을 수정했습니다.'], review: '', theme: 'environment' },
+  { id: 'water-explosion', processVideo: 'assets/water-process.mp4', processPoster: 'assets/water-process-poster.jpg', chapter: 'impact', title: '물 폭발', subtitle: 'Water Explosion / 게임 VFX', category: 'Impact', ready: true, video: 'assets/water-explosion-web.mp4', preview: 'assets/water-explosion-preview.mp4', thumbnail: 'assets/water-explosion-poster.jpg', captions: '', year: '', role: '', duration: '', tools: [], intent: '물이 터지는 순간의 힘과 물 특유의 질감을 표현해 보고 싶었습니다. 물이 한 번에 솟아오른 뒤 사방으로 흩어지는 흐름이 자연스럽게 보이도록 입자의 크기와 속도, 타이밍을 조정했습니다. 퍼지는 물방울에서도 물의 느낌이 잘 드러나도록 투명도와 밝기를 조정하며 작업했습니다.', process: [], review: '', theme: 'impact' },
+ ]
+};

@@ -1,1 +1,29 @@
-const http=require('http'),fs=require('fs'),path=require('path');http.createServer((req,res)=>{let name=decodeURIComponent(req.url.split('?')[0]);if(name==='/')name='/index.html';const file=path.resolve('.'+name);if(!file.startsWith(process.cwd()+path.sep)){res.writeHead(403);return res.end();}fs.readFile(file,(e,b)=>{if(e){res.writeHead(404);return res.end('Not found');}res.setHeader('Content-Type',({'html':'text/html; charset=utf-8','css':'text/css','js':'text/javascript'})[file.split('.').pop()]||'application/octet-stream');res.end(b);});}).listen(5173,'127.0.0.1',()=>console.log('Local: http://127.0.0.1:5173'));
+const http = require('node:http');
+const fs = require('node:fs');
+const path = require('node:path');
+const root = __dirname;
+const port = Number(process.env.PORT || 5173);
+const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.mp4': 'video/mp4', '.webm': 'video/webm', '.vtt': 'text/vtt', '.pdf': 'application/pdf' };
+http.createServer((req, res) => {
+ let pathname;
+ try { pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); } catch { res.writeHead(400); return res.end(); }
+ const file = path.resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
+ const relative = path.relative(root, file);
+ if (relative.startsWith('..') || path.isAbsolute(relative) || relative.split(/[\\/]/).some(p => p.startsWith('.')) || !mime[path.extname(file)]) { res.writeHead(403); return res.end('Forbidden'); }
+ fs.stat(file, (error, stat) => {
+  if (error || !stat.isFile()) { res.writeHead(404); return res.end('Not found'); }
+  const headers = { 'Content-Type': mime[path.extname(file)], 'Accept-Ranges': 'bytes', 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' };
+  let start = 0, end = stat.size - 1, status = 200;
+  if (req.headers.range) {
+   const match = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range);
+   if (!match || (!match[1] && !match[2])) { res.writeHead(416, { 'Content-Range': `bytes */${stat.size}` }); return res.end(); }
+   if (!match[1]) start = Math.max(0, stat.size - Number(match[2]));
+   else { start = Number(match[1]); if (match[2]) end = Math.min(end, Number(match[2])); }
+   if (start > end || start >= stat.size) { res.writeHead(416, { 'Content-Range': `bytes */${stat.size}` }); return res.end(); }
+   status = 206; headers['Content-Range'] = `bytes ${start}-${end}/${stat.size}`;
+  }
+  headers['Content-Length'] = Math.max(0, end - start + 1); res.writeHead(status, headers);
+  if (req.method === 'HEAD' || !stat.size) return res.end();
+  const stream = fs.createReadStream(file, { start, end }); stream.on('error', () => res.destroy()); stream.pipe(res); res.on('close', () => stream.destroy());
+ });
+}).listen(port, '127.0.0.1', () => console.log(`Local: http://127.0.0.1:${port}`));
