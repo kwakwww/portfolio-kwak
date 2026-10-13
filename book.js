@@ -70,6 +70,7 @@
   projects.forEach((featured, index) => {
    const chapter = chapters.find(chapter => chapter.id === featured.chapter);
    const node = button('', `chapter-link archive-tile tile-${index+1}`, () => navigate(pages.findIndex(p => p.project === featured)));
+   node.dataset.project=featured.id;
    node.setAttribute('aria-label',`${chapter.title} / ${featured.title} 작품 열기`);
 
    if(featured) {

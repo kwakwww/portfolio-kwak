@@ -377,3 +377,19 @@ dialog{background:#121314;border-color:#81704c66}.dialog-header{background:#1415
 .archive-tile-caption{padding:26px 14px 13px}.archive-tile .chapter-label>span{font-size:14px}
 .paper-stack{height:var(--book-frame-height)}
 }
+/* Varied film sizes stay inside the spread, with a clear lower margin. */
+@media(min-width:701px){
+.book{--book-frame-height:clamp(800px,90vh,1080px)}
+.archive-expanded .archive-tile.chapter-link{right:auto;bottom:auto}
+.archive-expanded .archive-tile[data-project="port-02"]{left:4%;top:7%;width:19%;height:21%}
+.archive-expanded .archive-tile[data-project="port-06-01"]{left:29%;top:6%;width:21%;height:23%}
+.archive-expanded .archive-tile[data-project="port-07-map"]{left:77%;top:9%;width:20%;height:21%}
+.archive-expanded .archive-tile[data-project="port-05"]{left:3%;top:36%;width:22%;height:24%}
+.archive-expanded .archive-tile[data-project="matrix"]{left:54%;top:5%;width:29%;height:30%}
+.archive-expanded .archive-tile[data-project="comp-2"]{left:64%;top:54%;width:33%;height:33%}
+.archive-expanded .archive-tile[data-project="water-explosion"]{left:5%;top:65%;width:32%;height:28%}
+.archive-board .archive-heading{left:46%;top:48%}
+.archive-expanded .book-showreel{bottom:20px;right:4%}
+}
+@media(max-width:700px){.archive-expanded{height:1590px;padding-bottom:70px}.archive-expanded .book-showreel{bottom:18px;min-height:36px}}
+@media(min-width:701px){.archive-expanded .archive-tile[data-project="port-07-map"]{left:78%;top:36%;width:19%;height:15%}}
