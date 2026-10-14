@@ -1,6 +1,6 @@
 /* 미디어 경로는 assets/... 상대 경로 또는 HTTPS 주소를 사용하세요. */
 window.PORTFOLIO = {
- name: 'KWAK',
+ name: 'Kwak gyeong ho',
  intro: '플레이의 순간에 힘을 더하는\n실시간 비주얼 이펙트를 만듭니다.',
  about: '기술의 원리를 이해하고 작업에 적용하며, 원하는 느낌이 나올 때까지 조정하고 개선합니다. 꾸준히 배우고 만드는 과정을 통해 성장하는 주니어 VFX 아티스트입니다.',
  profileReady: true, // 본인의 소개와 실제 사용 도구로 수정한 뒤 true
@@ -8,7 +8,7 @@ window.PORTFOLIO = {
  github: '',
  resume: '', // 예: assets/resume.pdf
  tools: ['Unreal Engine / Niagara', 'Houdini · 기초 학습 중', '3ds Max', 'Photoshop'],
- showreel: { src: 'https://www.youtube.com/watch?v=9pnH7G6ZnjI', poster: '', captions: '', caption: 'KWAK / Game VFX Portfolio — 포트폴리오 영상' },
+ showreel: { src: 'https://www.youtube.com/watch?v=9pnH7G6ZnjI', poster: '', captions: '', caption: 'Kwak gyeong ho / Game VFX Portfolio — 포트폴리오 영상' },
  chapters: [
   { id: 'aura', title: 'BUFF', subtitle: '캐릭터를 감싸는 빛', description: '캐릭터 주변의 빛과 궤적을 탐색하는 챕터.', theme: 'environment' },
   { id: 'magic', title: 'MAGIC', subtitle: '형태를 넘어, 상상으로', description: '스킬의 성격과 판타지의 감각을 담는 챕터.', theme: 'magic' },
